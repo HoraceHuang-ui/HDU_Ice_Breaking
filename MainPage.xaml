@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Ice_Breaking.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ice_Breaking"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+    <Grid Loaded="Grid_Loaded">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="杭电助手 认脸破冰" FontSize="70" FontFamily="segoe ui variable display" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock Text="by 21321108 HYY" Opacity="0.7" HorizontalAlignment="Center" FontFamily="segoe ui variable display" FontSize="30"/>
+
+            <TextBox x:Name="name_box" PlaceholderText="姓名" TextAlignment="Center" Margin="0,30,0,0" FontSize="25"/>
+            <TextBox x:Name="id_box" PlaceholderText="学号" TextAlignment="Center" Margin="0,10,0,0" FontSize="25"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                <CheckBox x:Name="anonym" Content="向他人隐藏我的信息"/>
+                <TextBlock x:Name="invalid_name_or_id" Text="姓名或学号错误！" Margin="20,5,0,0" FontStyle="Italic" Foreground="OrangeRed" Visibility="Collapsed"/>
+            </StackPanel>
+            <Button x:Name="start_btn" Click="start_btn_Click" Content="开始" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" MinWidth="200" Background="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+        </StackPanel>
+    </Grid>
+</Page>
