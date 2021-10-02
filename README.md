@@ -4,8 +4,8 @@
 ## 平台：通用 Windows (UWP)
 ### ❔ 如何安装
 1. 在 Release 中获取安装包
-2. 解压后将证书安装到 **本机** 的 **受信任的根目录** 中
-3. 打开 `ice_breaking.appxbundle` 文件，点击安装即可
+2. 解压后将证书安装到 **本机** 的 **受信任的根证书颁发机构** 中
+3. 打开 `ice_breaking.msixbundle` 文件，点击安装即可
 ### ⌨️ 开发说明
 - 使用语言：前端 XAML、后端 C#
 - IDE: Visual Studio 2019 Community
