@@ -3,9 +3,9 @@
 - 杭电圣光机联合学院  计算机科学与技术  21321108  黄一语
 ## 平台：通用 Windows (UWP)
 ### ❔ 如何安装
-1. 在 Release 中获取安装包
-2. 解压后将证书安装到 **本机** 的 **受信任的根证书颁发机构** 中
-3. 打开 `ice_breaking.msixbundle` 文件，点击安装即可
+1. 在 Releases 中获取安装包
+2. 解压后将证书 `ice_breaking_cert.pfx` 安装到 **本机**，密码是 ***hyy12345***，存储到 **受信任的根证书颁发机构** 中
+3. 打开 `Ice_Breaking_0.9.1.0_x64_Debug.msix` 文件，点击安装即可
 ### ⌨️ 开发说明
 - 使用语言：前端 XAML、后端 C#
 - IDE: Visual Studio 2019 Community
