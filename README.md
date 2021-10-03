@@ -48,6 +48,7 @@
 > ——hyy
 - 本程序使用 **对分查找** 实现学号校验，请务必保证数据库文档中学号升序排列
 - 保存学生数据的文件请放在 `C:\users\<username>\documents\ice_breaking` 中，文件名为 `student_data.txt`。运行一次软件应该会自动在那个路径里生成一个空的。
+- 我把自己写的 `student_data.txt` 放在应用包里面了，可以自行放进 `\Documents\ice_breaking` 中。
 - `student_data.txt` 中数据格式示例：
 ```yaml
 name: 黄一语
