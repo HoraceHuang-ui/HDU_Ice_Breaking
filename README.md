@@ -20,26 +20,28 @@
 ```cs
     public class Person
     {
-        public string name;  //这五个请阅读注意事项中的数据格式解释
+        public string name;  // 这五个请阅读注意事项中的数据格式解释
         public string id;
         public string male;
         public string anonym;
         public string photo;
 
-        public Person();  //名字、id、照片为空, male T, anonym F
+        public Person();  // 名字、id、照片为空, male T, anonym F
         public Person(string n, string i, string m, string a, string ph);
-        public void readFromStr(string s);  //利用 YamlDotNet 将字符串内容提取进类里
+        public Person(string s);  // 利用 YamlDotNet 将字符串内容提取进类里
     }
 ```
 ```cs
     public class DataInitializer
     {
-        public List<Person> person = new List<Person> { };  //存储了所有学生信息
-        public string raw_str = "";  //从文件中读出的所有学生信息
-        public List<string> s_list = new List<string> { };  //分离后的学生信息，传给 Person.readFromStr
+        public List<Person> person = new List<Person> { };  // 存储了所有学生信息
+        public string raw_str = "";  // 从文件中读出的所有学生信息
+        public List<string> s_list = new List<string> { };  // 分离后的学生信息，传给 Person.readFromStr
+        public int male_count = 0;  // 男生人数
+        public int female_count = 0;
 
-        public async Task init_data_async();  //给 person 赋值
-        private List<string> findMatch(string a);  //为 init_data_async() 服务，从 raw_str 分离出一堆字符串
+        public async Task init_data_async();  // 给 person 赋值
+        private List<string> findMatch(string a);  // 为 init_data_async() 服务，从 raw_str 分离出一堆字符串
     }
 ```
 ### ⚠️ 注意事项
@@ -56,7 +58,7 @@ id: 21321108
 male: T
 anonym: F
 photo: https://www.baidu.com/img/PC_7ac6a6d319ba4ae29b38e5e4280e9122.png
-#最后加个空行，两条数据之间可加可不加
+# 最后加个空行，两条数据之间可加可不加
 ```
 - 数据格式解释：
   - `name` 姓名，由于我用的是正则表达式提取所以务必为中文
