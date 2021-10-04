@@ -35,7 +35,7 @@ namespace Ice_Breaking
             photo = ph;
         }
 
-        public void readFromStr(string s)
+        public Person(string s)
         {
             var deserializer = new DeserializerBuilder().WithNamingConvention(UnderscoredNamingConvention.Instance).Build();
             Person p = deserializer.Deserialize<Person>(s);
@@ -51,21 +51,32 @@ namespace Ice_Breaking
         public List<Person> person = new List<Person> { };
         public string raw_str = "";  //从文件中读出的所有学生信息
         public List<string> s_list = new List<string> { };  //分离后的学生信息
+        public List<int> Male = new List<int> { };
+        public List<int> Female = new List<int> { };
 
-        public async Task init_data_async()
+        public async Task InitDataAsync()
         {
             StorageFolder storageFolder = Windows.Storage.KnownFolders.DocumentsLibrary;
             StorageFile File = await storageFolder.CreateFileAsync("ice_breaking\\student_data.txt", CreationCollisionOption.OpenIfExists);
             raw_str = await FileIO.ReadTextAsync(File);
-            s_list = findMatch(raw_str);
+            s_list = FindMatch(raw_str);
+            int i = 0;
+            Person t;
             foreach (string a in s_list)
             {
-                person.Add(new Person());
-                person[person.Count - 1].readFromStr(a);
+                t = new Person(a);
+                if (t.anonym == "F")
+                {
+                    if (t.male == "T")
+                        Male.Add(i);
+                    else Female.Add(i);
+                }
+                person.Add(t);
+                i++;
             }
         }
 
-        private List<string> findMatch(string a)
+        private List<string> FindMatch(string a)
         {
             List<string> s = new List<string> { };
             MatchCollection mc = Regex.Matches(a, @"name: [\u4e00-\u9fbb]+\r\nid: (\d+)\r\nmale: \w\r\nanonym: \w\r\nphoto: (\S+)\r\n");

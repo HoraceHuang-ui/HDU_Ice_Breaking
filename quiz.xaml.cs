@@ -39,14 +39,11 @@ namespace Ice_Breaking
             SecondaryButtonText = "不确定也得确定",
             DefaultButton = ContentDialogButton.Primary
         };
-        void swap<T>(ref T a, ref T b)
+        private int Min(int a, int b)
         {
-            T t;
-            t = a;
-            a = b;
-            b = t;
+            return (a < b) ? a : b;
         }
-        public int[] GenerateUniqueRandom(int minValue, int maxValue, int n)
+        private int[] GenerateUniqueRandom(int minValue, int maxValue, int n)
         {
             if (n > maxValue - minValue + 1)
                 n = maxValue - minValue + 1;
@@ -72,7 +69,7 @@ namespace Ice_Breaking
             return randNum;
         }
 
-        public void set_ans_style(ref Button chosen)
+        private void SetAnswerStyle(ref Button chosen)
         {
             var color = new Windows.UI.Color();
             color.R = 200;
@@ -92,7 +89,7 @@ namespace Ice_Breaking
                 default: break;
             }
         }
-        public void reset_ans_style()
+        private void ResetAnswerStyle()
         {
             var color = new Windows.UI.Color();
             color.A = 0;
@@ -101,31 +98,70 @@ namespace Ice_Breaking
             choice_c.Background = new SolidColorBrush(color);
             choice_d.Background = new SolidColorBrush(color);
         }
-        public void get_selected()
+        private void GetSelected()
         {
             selected = int.Parse(selected_raw_str);
-
-            Person t = new Person();
-            t = datainit.person[selected];
-            datainit.person[selected] = datainit.person[datainit.person.Count - 1];
-            datainit.person[datainit.person.Count - 1] = t;
         }
 
         //0123   ABCD
-        public void refresh()
+        private void Refresh()
         {
-            int[] choices = GenerateUniqueRandom(0, remaining - 1, 4);
+            int[] choices = { -1, -1, -1, -1 };
             ans_abcd = GenerateUniqueRandom(0, 3, 1)[0];
-            //datainit.person[choices[ans_abcd]]
+ReGenerate:
+            choices[ans_abcd] = GenerateUniqueRandom(0, remaining - 1, 1)[0];
+            if (choices[ans_abcd] == selected) goto ReGenerate;
+            int i, j, k;
+            int[] random_male = GenerateUniqueRandom(0, datainit.Male.Count - 1, Min(6, datainit.Male.Count));
+            int[] random_female = GenerateUniqueRandom(0, datainit.Female.Count - 1, Min(6, datainit.Female.Count));
+            for (i = 0; i < random_male.Length; i++)
+                random_male[i] = datainit.Male[random_male[i]];
+            for (i = 0; i < random_female.Length; i++)
+                random_female[i] = datainit.Female[random_female[i]];
+
+            bool m = datainit.person[choices[ans_abcd]].male == "T";
+            int[] set = m ? random_male : random_female;
+            int[] alt_set = m ? random_female : random_male;
             profile_photo.Source = new BitmapImage(new Uri(datainit.person[choices[ans_abcd]].photo));
+
+            j = 0;
+            for (i = 0; i < Min(4, set.Length) && j < set.Length; i++)
+            {
+                if (choices[i] != -1) continue;
+                if (choices.Contains(set[j]) || set[j] == selected)
+                {
+                    j++;
+                    i--;
+                    continue;
+                }
+                choices[i] = set[j];
+                j++;
+            }
+            if (i < 3)
+            {
+                k = i;
+                j = 0;
+                for (i = 0; i < 4 - k; i++)
+                {
+                    if (choices[k + i] != -1) continue;
+                    if (choices.Contains(alt_set[j]) || alt_set[j] == selected)
+                    {
+                        j++;
+                        i--;
+                        continue;
+                    }
+                    choices[k + i] = alt_set[j];
+                    j++;
+                }
+            }
             choice_a.Content = "A. " + datainit.person[choices[0]].name;
             choice_b.Content = "B. " + datainit.person[choices[1]].name;
             choice_c.Content = "C. " + datainit.person[choices[2]].name;
             choice_d.Content = "D. " + datainit.person[choices[3]].name;
-            reset_ans_style();
+            ResetAnswerStyle();
         }
 
-        public void move_anonym()
+        private void MoveAnonymPerson()
         {
             int i;
             for (i = 0; i < remaining; i++)
@@ -146,28 +182,28 @@ namespace Ice_Breaking
             StorageFolder storageFolder = KnownFolders.DocumentsLibrary;
             StorageFile file = await storageFolder.GetFileAsync("ice_breaking\\selected.txt");
             selected_raw_str = await FileIO.ReadTextAsync(file);
-            await datainit.init_data_async();
-            get_selected();
+            await datainit.InitDataAsync();
+            GetSelected();
             remaining = datainit.person.Count - 1;
-            move_anonym();
+            MoveAnonymPerson();
             if (remaining < 4)
             {
                 await insufficient.ShowAsync();
                 Frame.Navigate(typeof(MainPage));
                 return;
             }
-            refresh();
+            Refresh();
         }
 
         private void choice_a_Click(object sender, RoutedEventArgs e)
         {
             if (ans_abcd == 0)
             {
-                refresh();
+                Refresh();
             }
             else
             {
-                set_ans_style(ref choice_a);
+                SetAnswerStyle(ref choice_a);
             }
         }
 
@@ -175,11 +211,11 @@ namespace Ice_Breaking
         {
             if (ans_abcd == 1)
             {
-                refresh();
+                Refresh();
             }
             else
             {
-                set_ans_style(ref choice_b);
+                SetAnswerStyle(ref choice_b);
             }
         }
 
@@ -187,11 +223,11 @@ namespace Ice_Breaking
         {
             if (ans_abcd == 2)
             {
-                refresh();
+                Refresh();
             }
             else
             {
-                set_ans_style(ref choice_c);
+                SetAnswerStyle(ref choice_c);
             }
         }
 
@@ -199,11 +235,11 @@ namespace Ice_Breaking
         {
             if (ans_abcd == 4)
             {
-                refresh();
+                Refresh();
             }
             else
             {
-                set_ans_style(ref choice_d);
+                SetAnswerStyle(ref choice_d);
             }
         }
 

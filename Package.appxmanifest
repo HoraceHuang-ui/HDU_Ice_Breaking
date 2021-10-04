@@ -12,14 +12,14 @@
 
   <Identity
     Name="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5"
-    Publisher="CN=D"
+    Publisher="CN=HoraceHYY"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Ice_Breaking</DisplayName>
-    <PublisherDisplayName>D</PublisherDisplayName>
+    <PublisherDisplayName>HoraceHYY</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -48,14 +48,9 @@
   </Applications>
 
   <Capabilities>
-    <Capability Name="internetClient" />
-    <uap:Capability Name="picturesLibrary"/>
-    <uap:Capability Name="videosLibrary"/>
-    <uap:Capability Name="musicLibrary"/>
-    <Capability Name="internetClientServer"/>
-    <iot:Capability Name="systemManagement"/>
-    <uap4:Capability Name="userDataTasks"/>
-    <uap:Capability Name="removableStorage"/>
     <rescap:Capability Name="broadFileSystemAccess"/>
+    <uap:Capability Name="documentsLibrary"/>
+    <Capability Name="internetClient"/>
+    <Capability Name="internetClientServer"/>
   </Capabilities>
 </Package>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -16,10 +15,22 @@ namespace Ice_Breaking
             this.InitializeComponent();
         }
         DataInitializer datainit = new DataInitializer();
+        ContentDialog no_student = new ContentDialog
+        {
+            Title = "数据库异常",
+            Content = "未找到任何数据。请参阅 GitHub 项目仓库中的 README.md 修复！",
+            PrimaryButtonText = "前往 GitHub",
+            DefaultButton = ContentDialogButton.Primary
+        };
         
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            await datainit.init_data_async();
+            await datainit.InitDataAsync();
+            if (datainit.person.Count == 0)
+            {
+                await no_student.ShowAsync();
+                await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/HoraceHuang-ui/HDU_Ice_Breaking"));
+            }
         }
 
         private async void start_btn_Click(object sender, RoutedEventArgs e)
