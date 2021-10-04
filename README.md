@@ -36,7 +36,7 @@
     {
         public List<Person> person = new List<Person> { };  // 存储了所有学生信息
         public string raw_str = "";  // 从文件中读出的所有学生信息
-        public List<string> s_list = new List<string> { };  // 分离后的学生信息，传给 Person.readFromStr
+        public List<string> s_list = new List<string> { };  // 分离后的学生信息，传给 Person(string s)
         public int male_count = 0;  // 男生人数
         public int female_count = 0;
 
