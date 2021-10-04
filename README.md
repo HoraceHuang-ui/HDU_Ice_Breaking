@@ -41,7 +41,7 @@
         public List<int> Female = new List<int> { };
 
         public async Task InitDataAsync();  // 给 person 赋值
-        private List<string> FindMatch(string a);  // 为 init_data_async() 服务，从 raw_str 分离出一堆字符串
+        private List<string> FindMatch(string a);  // 为 InitDataAsync() 服务，从 raw_str 分离出一堆字符串
     }
 ```
 ### ⚠️ 注意事项
