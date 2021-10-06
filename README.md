@@ -1,14 +1,13 @@
 # 👌HDU_Ice_Breaking 杭电助手破冰
 
 - 杭电圣光机联合学院  计算机科学与技术  21321108  黄一语
-- **还没写完**
 
 ## 平台：通用 Windows (UWP)
 ### ❔ 如何安装
-1. 在 **设置** ->**更新与安全** -> **开发者选项**中，开启 **开发人员模式**
+1. 在 **设置** ->**更新与安全** -> **开发者选项** 中，开启 **开发人员模式**
 2. 在 `Releases` 中获取安装包
 3. 解压后将证书 `ice_breaking_cert.pfx` 安装到 **本地计算机**，密码是 ***hyy12345***，存储到 **受信任的根证书颁发机构** 中
-4. 打开 `Ice_Breaking_1.0.0.0_x64_Debug.msix` 文件，点击安装即可
+4. 打开 `Ice_Breaking_1.1.0.0_x64.msix` 文件，点击安装即可
 ### ⌨️ 开发说明
 - 使用语言：前端 XAML、后端 C#
 - IDE: Visual Studio 2019 Community
@@ -18,7 +17,7 @@
 - 类库: `Class1.cs`
 - 操作页: `quiz.xaml`
 - 数据库: `student_data.txt`
-- 类库中封装了两个类，`Person` 和 `DataInitializer`。定义如下：
+- 类库中放了两个类，`Person` 和 `DataInitializer`。定义如下：
 ```cs
     public class Person
     {
@@ -43,6 +42,7 @@
         public List<int> Female = new List<int> { };
 
         public async Task InitDataAsync();  // 给 person 赋值
+        public async Task AddPersonAsync(string new_name, string new_id, string new_male, string new_photo)  // 添加用户
         private List<string> FindMatch(string a);  // 为 InitDataAsync() 服务，从 raw_str 分离出一堆字符串
     }
 ```
@@ -50,7 +50,7 @@
 > 本人巨菜，代码可读性可能有点低、算法可能很暴力原始，
 > 存数据库更是离谱地用 txt 读字符串，请大佬们轻喷🥲
 > ——hyy
-- 本程序使用 **对分查找** 实现学号校验，请务必保证数据库文档中学号升序排列。
+- 本程序使用 **对分查找** 实现学号校验，请务必保证数据库文档中学号按 **字符串** 升序排列。
 - 保存学生数据的文件请放在 `C:\users\<username>\documents\ice_breaking` 中，文件名为 `student_data.txt`。运行一次软件应该会自动在那个路径里生成一个空的。
 - 我把自己写的 `student_data.txt` 放在应用包里面了，可以自行放进 `\Documents\ice_breaking` 中。
 - `student_data.txt` 中数据格式示例：
@@ -63,8 +63,8 @@ photo: https://www.baidu.com/img/PC_7ac6a6d319ba4ae29b38e5e4280e9122.png
 # 最后加个空行，两条数据之间可加可不加
 ```
 - 数据格式解释：
-  - `name` 姓名，由于我用的是正则表达式提取所以务必为中文
-  - `id` 学号，务必为升序
-  - `male` 参数分为 T 或 F，这样比如若生成照片是男生，那么下面选项中就不会出现女生
+  - `name` 姓名
+  - `id` 学号，务必为字符串升序
+  - `male` 参数为 T 或 F，这样比如若生成照片是男生，那么下面选项中就不会出现女生；若该性别人数不足四个则默认用另一性别补齐
   - `anonym` 匿名，在主页勾选后即为 T，然后照片和选项中都不会出现 ta
-  - `photo` 照片链接，可以是本地路径也可以是网页路径
+  - `photo` 照片链接，可以是本地路径也可以是网页路径，但如果不是合法路径会闪退
