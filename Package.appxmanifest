@@ -13,7 +13,7 @@
   <Identity
     Name="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5"
     Publisher="CN=HoraceHYY"
-    Version="1.0.0.0" />
+    Version="1.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

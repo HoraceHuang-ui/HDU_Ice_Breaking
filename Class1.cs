@@ -56,8 +56,9 @@ namespace Ice_Breaking
 
         public async Task InitDataAsync()
         {
-            StorageFolder storageFolder = Windows.Storage.KnownFolders.DocumentsLibrary;
+            StorageFolder storageFolder = KnownFolders.DocumentsLibrary;
             StorageFile File = await storageFolder.CreateFileAsync("ice_breaking\\student_data.txt", CreationCollisionOption.OpenIfExists);
+
             raw_str = await FileIO.ReadTextAsync(File);
             s_list = FindMatch(raw_str);
             int i = 0;
@@ -76,10 +77,37 @@ namespace Ice_Breaking
             }
         }
 
+        public async Task AddPersonAsync(string new_name, string new_id, string new_male, string new_photo)
+        {
+            Person new_person = new Person(new_name, new_id, new_male, "F", new_photo);
+            StorageFolder storageFolder = KnownFolders.DocumentsLibrary;
+            StorageFile File = await storageFolder.GetFileAsync("ice_breaking\\student_data.txt");
+            var serializer = new SerializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
+
+            int i;
+            for (i = 0; i < person.Count; i++)
+            {
+                if (new_id.CompareTo(person[i].id) < 0)
+                    break;
+            }
+            person.Insert(i, new_person);
+            s_list.Insert(i, serializer.Serialize(new_person));
+            if (new_male == "T")
+                Male.Add(i);
+            else
+                Female.Add(i);
+            raw_str = "";
+            foreach (string s in s_list)
+            {
+                raw_str += s;
+            }
+            await FileIO.WriteTextAsync(File, raw_str);
+        }
+
         private List<string> FindMatch(string a)
         {
             List<string> s = new List<string> { };
-            MatchCollection mc = Regex.Matches(a, @"name: [\u4e00-\u9fbb]+\r\nid: (\d+)\r\nmale: \w\r\nanonym: \w\r\nphoto: (\S+)\r\n");
+            MatchCollection mc = Regex.Matches(a, @"name: ([\u4e00-\u9fbb]*)([a-zA-Z\s]*)\r?\nid: (\d+)\r?\nmale: \w\r?\nanonym: \w\r?\nphoto: (\S+)\r?\n");
             foreach (Match m in mc)
             {
                 s.Add(m.ToString());

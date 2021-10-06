@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5" Publisher="CN=HoraceHYY" Version="0.9.3.0" ProcessorArchitecture="x64" />
+  <Identity Name="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5" Publisher="CN=HoraceHYY" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="788f4a28-a7d2-4deb-bee1-68cd9d48f1b5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Ice_Breaking</DisplayName>

@@ -19,24 +19,24 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>D:\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>EC55E997D462EB05BD69D31762F64BECC54FF37FEC903A2BD5E1447A10541A7B</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>788f4a28-a7d2-4deb-bee1-68cd9d48f1b5_0.9.3.0_x64__xtt8z0my70fh2</RegisteredPackageMoniker>
+    <RegisteredManifestChecksum>4D73FDA735A947B4675CE343BA4DCEE0D9441432F3689DAD4C9626BFB583CDD2</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>788f4a28-a7d2-4deb-bee1-68cd9d48f1b5_1.0.0.0_x64__xtt8z0my70fh2</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>788f4a28-a7d2-4deb-bee1-68cd9d48f1b5_xtt8z0my70fh2!App</RegisteredUserModeAppID>
     <RegisteredPackageID>788f4a28-a7d2-4deb-bee1-68cd9d48f1b5</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=HoraceHYY</RegisteredPackagePublisher>
-    <RegisteredVersion>0.9.3.0</RegisteredVersion>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-10-04T13:48:44.285</Modified>
+      <Modified>2021-10-06T15:30:58.961</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\Ice_Breaking.exe">
       <PackagePath>entrypoint\Ice_Breaking.exe</PackagePath>
-      <Modified>2021-10-04T13:48:43.554</Modified>
+      <Modified>2021-10-06T15:30:58.219</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -90,19 +90,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\Ice_Breaking.xr.xml">
       <PackagePath>Ice_Breaking.xr.xml</PackagePath>
-      <Modified>2021-10-02T03:03:04.690</Modified>
+      <Modified>2021-10-05T12:41:39.624</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-10-04T13:48:43.483</Modified>
+      <Modified>2021-10-06T15:30:58.137</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-10-04T13:48:43.483</Modified>
+      <Modified>2021-10-06T15:30:58.137</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\quiz.xbf">
       <PackagePath>quiz.xbf</PackagePath>
-      <Modified>2021-10-04T13:48:43.483</Modified>
+      <Modified>2021-10-06T15:30:58.137</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -114,11 +114,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-10-04T07:49:28.340</Modified>
+      <Modified>2021-10-05T12:06:39.044</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\VS_prj\ice_breaking\Ice_Breaking\bin\x64\Debug\Core\Ice_Breaking.exe">
       <PackagePath>Ice_Breaking.exe</PackagePath>
-      <Modified>2021-10-04T13:48:44.283</Modified>
+      <Modified>2021-10-06T15:30:58.959</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\D\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>

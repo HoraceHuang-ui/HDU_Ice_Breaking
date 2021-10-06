@@ -108,7 +108,7 @@ namespace Ice_Breaking
         {
             int[] choices = { -1, -1, -1, -1 };
             ans_abcd = GenerateUniqueRandom(0, 3, 1)[0];
-ReGenerate:
+        ReGenerate:
             choices[ans_abcd] = GenerateUniqueRandom(0, remaining - 1, 1)[0];
             if (choices[ans_abcd] == selected) goto ReGenerate;
             int i, j, k;
@@ -137,7 +137,7 @@ ReGenerate:
                 choices[i] = set[j];
                 j++;
             }
-            if (i < 3)
+            if (i < 4)
             {
                 k = i;
                 j = 0;

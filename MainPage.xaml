@@ -9,6 +9,30 @@
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
     <Grid Loaded="Grid_Loaded">
+        <Button x:Name="add_user" Click="add_user_Click" VerticalAlignment="Top" HorizontalAlignment="Right" FontFamily="segoe mdl2 assets" Content="" FontSize="20" Margin="0,20,20,0" Height="50" Width="50">
+            <Button.Flyout>
+                <Flyout>
+                    <StackPanel>
+                        <TextBox x:Name="new_name_box" Header="姓名" Width="200" Margin="0,0,0,20"/>
+                        <TextBox x:Name="new_id_box" Header="学号" Width="200" Margin="0,0,0,20"/>
+                        <DropDownButton x:Name="dropdown_gender" Content="性别" Margin="0,0,0,20">
+                            <DropDownButton.Flyout>
+                                <MenuFlyout Placement="Bottom">
+                                    <MenuFlyoutItem x:Name="dropdown_male" Text="男" Click="dropdown_male_Click"/>
+                                    <MenuFlyoutItem x:Name="dropdown_female" Text="女" Click="dropdown_female_Click"/>
+                                </MenuFlyout>
+                            </DropDownButton.Flyout>
+                        </DropDownButton>
+                        <TextBox x:Name="new_photo_box" Header="图片地址" Width="200" Margin="0,0,0,20"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="add_save" Click="add_save_Click" Content="保存" Margin="0,0,0,10"  Background="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+                            <TextBlock x:Name="user_existed" Text="该学号已存在！" Margin="20,5,0,0" FontStyle="Italic" Foreground="OrangeRed" Visibility="Collapsed"/>
+                            <TextBlock x:Name="gender_expected" Text="请选择性别！" Margin="20,5,0,0" FontStyle="Italic" Foreground="OrangeRed" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="杭电助手 认脸破冰" FontSize="70" FontFamily="segoe ui variable display" FontWeight="Bold" HorizontalAlignment="Center"/>
             <TextBlock Text="by 21321108 HYY" Opacity="0.7" HorizontalAlignment="Center" FontFamily="segoe ui variable display" FontSize="30"/>
